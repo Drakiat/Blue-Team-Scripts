@@ -1,3 +1,4 @@
+echo Don't forget to run with sudo!!!!!!!!!!!!
 echo Input banner:
 read banner
 
