@@ -1,4 +1,5 @@
 #!/bin/bash
+echo Don't forget to run with sudo!!!!!!!!!!!!
 echo Enter IP of Splunk server:
 read ip
 wget -O splunkforwarder.tgz 'https://tinyurl.com/l1n-sp1-for'
