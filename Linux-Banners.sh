@@ -1,5 +1,5 @@
 #!/bin/bash
-echo Don't forget to run with sudo!!!!!!!!!!!!
+echo Do not forget to run with sudo!!!!!!!!!!!!
 echo Input banner:
 read banner
 
