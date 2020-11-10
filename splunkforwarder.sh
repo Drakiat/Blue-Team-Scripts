@@ -4,6 +4,10 @@ if [[ $UID != 0 ]]; then
     echo "sudo $0 $*"
     exit 1
 fi
+#ASCII :)
+wget -qO- https://raw.githubusercontent.com/Drakiat/Blue-Team-Scripts/main/sec2.txt
+echo ""
+echo ""
 echo Enter IP of Splunk server:
 read ip
 wget -O splunkforwarder.tgz 'https://tinyurl.com/l1n-sp1-for'
