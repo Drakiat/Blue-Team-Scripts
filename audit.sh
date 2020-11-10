@@ -5,7 +5,7 @@ if [[ $UID != 0 ]]; then
     exit 1
 fi
 #ASCII :)
-wget -qO- https://pastebin.com/raw/SqiMPjrY
+wget -qO- https://raw.githubusercontent.com/Drakiat/Blue-Team-Scripts/main/sec2.txt
 echo ""
 echo ""
 #System Name
