@@ -10,6 +10,8 @@ echo ""
 echo ""
 echo Input banner:
 read banner
+sed -i '/Banner/ d' /etc/ssh/sshd_config
+sed -i '/#Banner/ d' /etc/ssh/sshd_config
 
 chown root:root /etc/motd
 chmod 644 /etc/motd
@@ -22,3 +24,4 @@ echo $banner > /etc/issue
 chown root:root /etc/issue.net
 chmod 644 /etc/issue.net
 echo $banner > /etc/issue.net
+echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
