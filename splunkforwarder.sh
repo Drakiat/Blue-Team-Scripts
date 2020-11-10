@@ -1,5 +1,9 @@
 #!/bin/bash
-echo Do not forget to run with sudo!!!!!!!!!!!!
+if [[ $UID != 0 ]]; then
+    echo "Please run this script with sudo:"
+    echo "sudo $0 $*"
+    exit 1
+fi
 echo Enter IP of Splunk server:
 read ip
 wget -O splunkforwarder.tgz 'https://tinyurl.com/l1n-sp1-for'
