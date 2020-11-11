@@ -10,8 +10,8 @@ echo ""
 echo ""
 echo Enter IP of Splunk server:
 read ip
-wget -O splunkforwarder.tgz 'https://tinyurl.com/l1n-sp1-for'
-#curl -Lo splunkforwarder.tgz 'https://tinyurl.com/l1n-sp1-for'
+wget -O splunkforwarder.tgz 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=8.1.0&product=universalforwarder&filename=splunkforwarder-8.1.0-f57c09e87251-Linux-x86_64.tgz&wget=true'
+#curl -Lo splunkforwarder.tgz 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=8.1.0&product=universalforwarder&filename=splunkforwarder-8.1.0-f57c09e87251-Linux-x86_64.tgz&wget=true'
 tar -xvzf splunkforwarder.tgz -C /opt
 cd /opt/splunkforwarder/bin
 ./splunk start --accept-license
