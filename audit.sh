@@ -25,7 +25,8 @@ echo "Description: " $purpose >> audit.txt
 read -p "Critical Application(separate with a comma if multiple): " app
 echo "Critical Application(s): "$app>>audit.txt
 #List of Admin/User/Service Accounts
-echo "List of Admin/User/Service Accounts:" `grep '^sudo:.*$' /etc/group | cut -d: -f4`>>audit.txt
+echo "List of Admin/User/Service Accounts:" `grep '^sudo:.*$' /etc/group | cut -d: -f4|tr '\n' ' '^C && grep '^wheel:.*$' /etc/group | cut -d: -f4
+`>>audit.txt
 #List of Services Running
 #List of Open Ports
 echo ""
