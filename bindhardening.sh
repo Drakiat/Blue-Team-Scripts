@@ -44,10 +44,6 @@ iptables -P OUTPUT ACCEPT
 iptables -P INPUT DROP
 # Set default deny firewall policy
 iptables -P FORWARD DROP
-# Save rules
-iptables-save > /etc/iptables/rules.v4
-# Apply and confirm
-iptables-apply -t 40 /etc/iptables/rules.v4
 #Stop and purge cron
 echo -e "${LIGHTCYAN}Stopping and purging Cron...${NOCOLOR}"
 service cron stop
