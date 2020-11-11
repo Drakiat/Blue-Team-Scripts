@@ -15,6 +15,7 @@ echo "Internal IP: " `ip a | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep 
 #External IP
 echo -e "Chceking external IP, might take a few minutes \e[5m...\e[0m"
 echo "External IP: "`dig +short myip.opendns.com @resolver1.opendns.com`>>audit.txt
+echo -e "\e[34mDone!\e[0m"
 #OS version
 echo "OS version: " `uname -mrs`>> audit.txt
 #Purposes
