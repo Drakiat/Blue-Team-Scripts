@@ -37,7 +37,7 @@ iptables -A OUTPUT -p tcp --sport 20 -j ACCEPT
 #add more
 
 # Allow established connections
-iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -I INPUT -m state --state ESTABLISHED -j ACCEPT
 # Allow outgoing connections
 iptables -P OUTPUT ACCEPT
 # Set default deny firewall policy
