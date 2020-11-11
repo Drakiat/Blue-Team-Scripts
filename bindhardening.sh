@@ -48,8 +48,8 @@ iptables -P FORWARD DROP
 echo -e "${LIGHTCYAN}Stopping and purging Cron...${NOCOLOR}"
 service cron stop
 sudo apt-get purge cron
-#BackupBind
-echo -e "${LIGHTCYAN}Copying Bind config...${NOCOLOR}"
+#BackupEtc
+echo -e "${LIGHTCYAN}Copying /etc backup...${NOCOLOR}"
 #BackupEtc
 cp -ar /etc/ /root/etcbackup
 echo -e "${LIGHTCYAN}Setting permissions on shadow files...${NOCOLOR}"
