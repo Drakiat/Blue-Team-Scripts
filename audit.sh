@@ -13,6 +13,7 @@ echo "hostname: "`hostname` >audit.txt
 #internal IP
 echo "Internal IP: " `ip a | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'` >> audit.txt
 #External IP
+echo -e "Chceking external IP, might take a few minutes \e[5m...\e[0m"
 echo "External IP: "`dig +short myip.opendns.com @resolver1.opendns.com`>>audit.txt
 #OS version
 echo "OS version: " `uname -mrs`>> audit.txt
