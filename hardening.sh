@@ -13,6 +13,7 @@ echo ""
 echo -e "${LIGHTCYAN}Hardening firewall...${NOCOLOR}"
 # Flush/Delete firewall rules
 iptables -F
+#Delete all chains
 iptables -X
 iptables -Z
 # Βlock null packets (DoS)
@@ -35,7 +36,6 @@ iptables -A OUTPUT -p udp --sport 123 -j ACCEPT
 iptables -A INPUT -p tcp --dport 21 -j ACCEPT
 iptables -A OUTPUT -p tcp --sport 20 -j ACCEPT
 #add more
-
 # Allow established connections
 iptables -I INPUT -m state --state ESTABLISHED -j ACCEPT
 # Allow outgoing connections
