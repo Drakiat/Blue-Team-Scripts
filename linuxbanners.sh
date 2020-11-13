@@ -25,4 +25,9 @@ chown root:root /etc/issue.net
 chmod 644 /etc/issue.net
 echo $banner > /etc/issue.net
 echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
+
+sudo chmod -x /etc/update-motd.d/*
+sed -i '/^[^#]*\<pam_motd.so\>/s/^/#/' /etc/pam.d/sshd
+
 /etc/init.d/sshd restart
+
