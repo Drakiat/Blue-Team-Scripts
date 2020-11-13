@@ -25,3 +25,4 @@ chown root:root /etc/issue.net
 chmod 644 /etc/issue.net
 echo $banner > /etc/issue.net
 echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
+/etc/init.d/sshd restart
