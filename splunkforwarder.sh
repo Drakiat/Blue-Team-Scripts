@@ -19,4 +19,13 @@ cd /opt/splunkforwarder/bin
 ./splunk add forward-server $ip:9997
 ./splunk add monitor /var/log/
 ./splunk restart
+read -p "Do you want iptables rules to be added? (Y/N)" -n 1 -r
+echo  
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    echo "iptables -I INPUT -p tcp --sport 9997 -s $ip -j ACCEPT"
+    echo "iptables -I OUTPUT -p tcp --dport 9997 -d $ip -j ACCEPT"
+    iptables -I INPUT -p tcp --sport 9997 -s $ip -j ACCEPT
+    iptables -I OUTPUT -p tcp --dport 9997 -d $ip -j ACCEPT
+fi
 
