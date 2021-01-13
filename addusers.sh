@@ -4,7 +4,13 @@
 # ASCII Cause why not ;)
 echo ""
 echo ""
-wget -qO- https://raw.githubusercontent.com/Drakiat/Blue-Team-Scripts/main/sec2.txt
+#ASCII :)
+FILE=sec2.txt
+if [ -f "$FILE" ]; then
+    cat $FILE
+else
+    wget -qO- https://raw.githubusercontent.com/Drakiat/Blue-Team-Scripts/main/sec2.txt
+fi
 echo ""
 echo ""
 

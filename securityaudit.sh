@@ -5,7 +5,12 @@ if [[ $UID != 0 ]]; then
     exit 1
 fi
 #ASCII :)
-wget -qO- https://raw.githubusercontent.com/Drakiat/Blue-Team-Scripts/main/sec2.txt
+FILE=sec2.txt
+if [ -f "$FILE" ]; then
+    cat $FILE
+else
+    wget -qO- https://raw.githubusercontent.com/Drakiat/Blue-Team-Scripts/main/sec2.txt
+fi
 echo ""
 echo ""
 CYAN='\033[1;36m'
