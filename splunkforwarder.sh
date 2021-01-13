@@ -5,13 +5,19 @@ if [[ $UID != 0 ]]; then
     exit 1
 fi
 #ASCII :)
-wget -qO- https://raw.githubusercontent.com/Drakiat/Blue-Team-Scripts/main/sec2.txt
+FILE=sec2.txt
+if [ -f "$FILE" ]; then
+    cat $FILE
+else
+    wget -qO- https://raw.githubusercontent.com/Drakiat/Blue-Team-Scripts/main/sec2.txt
+fi
+
 echo ""
 echo ""
 echo Enter IP of Splunk server:
 read ip
 read -p "Do you want iptables rules to be added? (Y/N)" -n 1 -r
-echo  
+echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo "iptables -I INPUT -p tcp --sport 9997 -s $ip -j ACCEPT"
@@ -28,6 +34,5 @@ cd /opt/splunkforwarder/bin
 ./splunk add forward-server $ip:9997
 ./splunk add monitor /var/log/
 ./splunk restart
-echo "iptables -I INPUT -p tcp --sport 9997 -s $ip -j ACCEPT"
-echo "iptables -I OUTPUT -p tcp --dport 9997 -d $ip -j ACCEPT"
-
+echo "adding 'iptables -I INPUT -p tcp --sport 9997 -s $ip -j ACCEPT'"
+echo "adding 'iptables -I OUTPUT -p tcp --dport 9997 -d $ip -j ACCEPT'"
