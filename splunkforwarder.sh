@@ -19,8 +19,8 @@ then
     iptables -I INPUT -p tcp --sport 9997 -s $ip -j ACCEPT
     iptables -I OUTPUT -p tcp --dport 9997 -d $ip -j ACCEPT
 fi
-#wget -O splunkforwarder.tgz 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=8.1.0&product=universalforwarder&filename=splunkforwarder-8.1.0-f57c09e87251-Linux-x86_64.tgz&wget=true'
-curl -Lo splunkforwarder.tgz 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=8.1.0&product=universalforwarder&filename=splunkforwarder-8.1.0-f57c09e87251-Linux-x86_64.tgz&wget=true'
+#wget -O splunkforwarder.tgz 'https://www.dropbox.com/s/3ebur1lmh7thfao/splunkforwarder-8.1.0-f57c09e87251-Linux-x86_64.tgz?dl=1'
+curl -Lo splunkforwarder.tgz 'https://www.dropbox.com/s/3ebur1lmh7thfao/splunkforwarder-8.1.0-f57c09e87251-Linux-x86_64.tgz?dl=1'
 tar -xvzf splunkforwarder.tgz -C /opt
 cd /opt/splunkforwarder/bin
 ./splunk start --accept-license
