@@ -27,6 +27,7 @@ WantedBy=multi-user.target
 ">/etc/systemd/system/koth.service
 #create the king flag
 echo “unclaimed” > /root/king.txt
+cd ..
 mv koth-service/ /opt
 systemctl start koth
 #And automatically get it to start on boot:

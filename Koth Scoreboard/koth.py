@@ -9,11 +9,13 @@ def getBoxesIP():
         IPs.append(line.strip())
     return IPs
 def checkBoxes(IPs):
+    CurrentKing = {}
     for ip in IPs:
         print('trying '+'http://'+ip.strip()+':9999/')
         try:
             r=requests.get('http://'+ip.strip()+':9999/',timeout=3)
             print(r.text)
+            CurrentKing.update({ip.strip():r.text})
         except requests.exceptions.HTTPError as e:
             print("error")
         except requests.exceptions.RequestException as e:
@@ -21,6 +23,8 @@ def checkBoxes(IPs):
         time.sleep(1)
 def main():
     IPs=getBoxesIP()
+    CurrentKing = {}
+    Score={}
     while(True):
         checkBoxes(IPs)
 main()
