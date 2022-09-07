@@ -12,12 +12,12 @@ def checkBoxes(IPs):
     for ip in IPs:
         print('trying '+'http://'+ip.strip()+':9999/')
         try:
-            r=requests.get('http://'+ip.strip()+':9999/')
+            r=requests.get('http://'+ip.strip()+':9999/',timeout=3)
             print(r.text)
         except requests.exceptions.HTTPError as e:
-            print(e)
+            print("error")
         except requests.exceptions.RequestException as e:
-            print(e)
+            print("error")
         time.sleep(1)
 def main():
     IPs=getBoxesIP()
