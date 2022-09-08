@@ -11,20 +11,29 @@ def getBoxesIP():
 def checkBoxes(IPs):
     CurrentKing = {}
     for ip in IPs:
-        print('trying '+'http://'+ip.strip()+':9999/')
+        #print('trying '+'http://'+ip.strip()+':9999/')
         try:
             r=requests.get('http://'+ip.strip()+':9999/',timeout=3)
-            print(r.text)
-            CurrentKing.update({ip.strip():r.text})
+            #print(r.text)
+            CurrentKing.update({ip.strip():r.text.strip()})
         except requests.exceptions.HTTPError as e:
             print("error")
         except requests.exceptions.RequestException as e:
             print("error")
-        time.sleep(1)
+        time.sleep(5)
+    return CurrentKing
 def main():
     IPs=getBoxesIP()
     CurrentKing = {}
     Score={}
     while(True):
-        checkBoxes(IPs)
+        CurrentKing=checkBoxes(IPs)
+        print(CurrentKing)
+        for kings in CurrentKing.values():
+            if kings in Score:
+                Score.update({kings:Score[kings]+1})
+            else:
+                Score.update({kings:0})
+        print(Score)
+
 main()
