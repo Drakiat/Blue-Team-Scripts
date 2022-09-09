@@ -1,5 +1,7 @@
 import requests
 import time
+import csv
+import os
 def getBoxesIP():
     IPs = []
     file = open('IPs.txt','r')
@@ -26,6 +28,7 @@ def main():
     IPs=getBoxesIP()
     CurrentKing = {}
     Score={}
+    dataToSend =()
     while(True):
         CurrentKing=checkBoxes(IPs)
         print(CurrentKing)
@@ -34,6 +37,15 @@ def main():
                 Score.update({kings:Score[kings]+1})
             else:
                 Score.update({kings:0})
+        w = csv.writer(open("output.csv", "w"))
+        for key, val in CurrentKing.items():
+            w.writerow([key, val])
         print(Score)
-
-main()
+try:
+    main()
+except KeyboardInterrupt:
+    print('ctrl-c button. Saving output as ouput.csv.old')
+    os.rename("output.csv", "output.csv.old")
+else:
+    print('Hello user there is some format error')
+    os.rename("output.csv", "output.csv.old")
