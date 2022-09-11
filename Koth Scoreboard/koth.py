@@ -15,8 +15,8 @@ def updateScoreFile(Score_Dict):
     #    reader =  csv.DictReader(infile,delimiter=',')
     #    Score_File = dict(reader)
         #Score_File = pd.read_csv('scores.csv', header=None, index_col=0, squeeze=True).to_dict()
-        print("here comes the score file")
-        print(Score_Dict)
+        #print("here comes the score file")
+        #print(Score_Dict)
         #outfile.close()
         w = csv.writer(open("score.csv", "w"))
         for key, val in Score_Dict.items():
@@ -30,9 +30,9 @@ def checkBoxes(IPs):
             #print(r.text)
             CurrentKing.update({ip.strip():r.text.strip()})
         except requests.exceptions.HTTPError as e:
-            print("HTTP error")
+            print("HTTP error on ip: "+ip)
         except requests.exceptions.RequestException as e:
-            print("Request error")
+            print("Request error on ip: "+ip)
         time.sleep(5)
     return CurrentKing
 def main():
