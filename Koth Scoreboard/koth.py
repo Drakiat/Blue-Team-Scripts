@@ -10,6 +10,17 @@ def getBoxesIP():
     for line in Lines:
         IPs.append(line.strip())
     return IPs
+def updateScoreFile(Score_Dict):
+    #with open('scores.csv', mode='r') as infile:
+    #    reader =  csv.DictReader(infile,delimiter=',')
+    #    Score_File = dict(reader)
+        #Score_File = pd.read_csv('scores.csv', header=None, index_col=0, squeeze=True).to_dict()
+        print("here comes the score file")
+        print(Score_Dict)
+        #outfile.close()
+        w = csv.writer(open("score.csv", "w"))
+        for key, val in Score_Dict.items():
+            w.writerow([key, val])
 def checkBoxes(IPs):
     CurrentKing = {}
     for ip in IPs:
@@ -19,9 +30,9 @@ def checkBoxes(IPs):
             #print(r.text)
             CurrentKing.update({ip.strip():r.text.strip()})
         except requests.exceptions.HTTPError as e:
-            print("error")
+            print("HTTP error")
         except requests.exceptions.RequestException as e:
-            print("error")
+            print("Request error")
         time.sleep(5)
     return CurrentKing
 def main():
@@ -36,10 +47,11 @@ def main():
             if kings in Score:
                 Score.update({kings:Score[kings]+1})
             else:
-                Score.update({kings:0})
+                Score.update({kings:int(1)})
         w = csv.writer(open("output.csv", "w"))
         for key, val in CurrentKing.items():
             w.writerow([key, val])
+        updateScoreFile(Score)
         print(Score)
 try:
     main()
